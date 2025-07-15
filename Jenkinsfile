@@ -5,6 +5,7 @@ pipeline {
         APP_NAME = 'stocksight-backend'
         VENV_PATH = "${WORKSPACE}/venv/Scripts/activate"
         MAIN_FILE = 'app/main.py'
+        JENKINS_NODE_COOKIES = 'dontKillMe'
     }
 
     stages {
