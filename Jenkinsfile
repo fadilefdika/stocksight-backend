@@ -33,7 +33,9 @@ pipeline {
         stage('Start App with PM2') {
             steps {
                 sh '''
-                    pm2 start ${MAIN_FILE} --name ${APP_NAME} --interpreter python3
+                    pm2 delete ${APP_NAME} || true
+                    export PYTHONPATH=$WORKSPACE
+                    pm2 start ${MAIN_FILE} --name ${APP_NAME} --interpreter python3 --cwd $WORKSPACE
                 '''
             }
         }
