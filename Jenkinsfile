@@ -16,7 +16,7 @@ pipeline {
         stage('Install Dependencies') {
             steps {
                 sh '''
-                    python -m venv venv
+                    python3 -m venv venv
                     . venv/Scripts/activate
                     pip install --upgrade pip
                     pip install -r requirements.txt
@@ -35,7 +35,7 @@ pipeline {
             steps {
                 sh '''
                     . venv/Scripts/activate
-                    pm2 start ${MAIN_FILE} --name ${APP_NAME} --interpreter python
+                    pm2 start ${MAIN_FILE} --name ${APP_NAME} --interpreter python3
                 '''
             }
         }
