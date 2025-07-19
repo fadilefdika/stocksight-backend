@@ -15,10 +15,10 @@ load_dotenv()
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     # Load scaler
-    scaler = joblib.load("models/scaler.pkl")
+    scaler = joblib.load("models/scaler_stocksight.pkl")
 
     # Load model
-    model_path = os.getenv("STOCK_MODEL_PATH", "models/stock_lstm_model.keras")
+    model_path = os.getenv("STOCK_MODEL_PATH", "models/stocksight.keras")
     try:
         stock_model = load_model(model_path, compile=False)
     except Exception as e:
